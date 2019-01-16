@@ -1,0 +1,26 @@
+button{
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width : 70%;
+    height: 25%;
+    font-size: 150%;
+    border-radius: 50px;
+}
+#mju_logo2{
+    border-radius: 50px;
+}
+h3{
+    margin-top: 10px;
+    text-align: center;
+}
+hr{
+    border : 1px solid black;
+}
+footer{
+    text-align: center;
+    font-size: 25px;
+    color : white;
+    background-color: red;
+}
