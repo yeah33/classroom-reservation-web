@@ -5,14 +5,26 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+var indexRouter = require('./routes/api/index');
+var usersRouter = require('./routes/api/users');
+var page1Router = require('./routes/api/page1');
+var lookupRouter = require('./routes/api/lookup');
+var page2Router = require('./routes/api/page2');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+if (app.get('env') === 'development') {
+  app.locals.pretty = true;
+}
+
+
+// public 디렉토리에 있는 내용은 static하게 service하도록.
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,12 +38,19 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Route
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/page1', page1Router);
+app.use('/page2', page2Router);
+app.use('/lookup', lookupRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
 // error handler

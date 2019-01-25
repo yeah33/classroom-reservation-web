@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\public",
+    "\\routes",
+    "\\routes\\api",
+    "\\views",
+    "\\views\\includes",
+    "\\views\\lookup",
+    "\\views\\page1",
+    "\\views\\page2"
+  ],
+  "SelectedNode": "\\views\\page2\\queryB.html",
+  "PreviewInSolutionExplorer": false
+}

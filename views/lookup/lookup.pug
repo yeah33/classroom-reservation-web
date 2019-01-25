@@ -1,5 +1,5 @@
 //- reservations는 라우터에서 처리
-//- extends "layout"
+extends ../layout
 
 block content
   .container
@@ -15,7 +15,7 @@ block content
           th 예약 목적
           th 수정 / 삭제
       tbody
-        each d in reservations
+        //each d in reservations
           tr
             td= d.강의실번호
             td= d.예약날짜
