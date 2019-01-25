@@ -1,26 +1,77 @@
-button{
-    display: block;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    width : 70%;
-    height: 25%;
-    font-size: 150%;
-    border-radius: 50px;
+font-family: 'Nanum Gothic', sans-serif;
+
+  
+.container {
+    padding: 2em;
 }
+  
+  button,
+  button::after {
+    -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+      transition: all 0.3s;
+  }
+  
+button {
+    background: none;
+    border: 3px solid #A593E0;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 20px;
+    padding: 20px, 20px;
+    position: relative;
+    text-transform: uppercase;
+  }
+  
+  button::before,
+  button::after {
+    background: #D1B6E1;
+    content: '';
+    position: absolute;
+    z-index: -1;
+  }
+  
+  button:hover {
+    color: #A593E0;
+  }
+
+.btn-1 {
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    color: #A593E0;
+    margin: 20px;
+    align: right;
+}
+.btn-1::after {
+    height: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  .btn-1:hover:after {
+    height: 100%;
+  }
+
 #mju_logo2{
     border-radius: 50px;
 }
-h3{
-    margin-top: 10px;
+.header{
+    margin-top: 15px;
     text-align: center;
+    margin: 10px;
 }
-hr{
-    border : 1px solid black;
+.hr{
+    border : 5px solid #9DC8C8;
 }
-footer{
+.footer{
     text-align: center;
     font-size: 25px;
     color : white;
-    background-color: red;
+    background-color: #9DC8C8;
 }
