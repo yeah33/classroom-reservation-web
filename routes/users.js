@@ -6,6 +6,17 @@ const catchErrors = require('../lib/async-error');
 const request = require('request');
 const passport = require('passport');
 
+
+function needAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    req.flash('danger', 'Please signin first.');
+    res.redirect('/');
+  }
+}
+
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.render('login');

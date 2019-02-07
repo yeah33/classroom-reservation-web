@@ -12,7 +12,7 @@ module.exports = (app, passport) => {
   
   app.get('/signout', (req, res) => {
     req.logout();
-    req.flash('success', 'Successfully signed out');
+    req.flash('success', '로그아웃 되었습니다.');
     res.redirect('/');
   });
 };
