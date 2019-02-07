@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .container
+    .clearfix
+      form.form-signin(action='/login', method='POST')
+        h3.form-signin-heading 로그인
+        label.sr-only(for='studentID') 학번
+        input(
+          type='studentID', id='studentID', name='studentID', class='form-control', 
+          placeholder='학번', required, autofocus
+        )
+        label.sr-only(for='password') 비밀번호
+        input(
+          type='password', id='password', name='password', class='form-control', 
+          placeholder='Password', required, autofocus
+        )
+        .checkbox
+          label 
+            input(type="checkbox", value="remember-me")
+            |
+            | 로그인 유지
+        button.btn.btn-primary.btn-block(type='submit') 로그인
