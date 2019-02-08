@@ -1,74 +1,49 @@
-.container {
-    padding: 2em;
+.buttons{
+    padding: 1em 15px;
 }
-  
-  button,
-  button::after {
-    -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-      transition: all 0.3s;
-  }
-  
-button {
-    background: none;
-    border: 3px solid #A593E0;
-    border-radius: 5px;
-    color: #fff;
-    display: block;
-    font-size: 50px;
-    font-weight: bold;
-    margin: 20px;
-    padding: 20px, 20px;
-    position: relative;
-    text-transform: uppercase;
-  }
-  
-  button::before,
-  button::after {
-    background: #D1B6E1;
-    content: '';
-    position: absolute;
-    z-index: -1;
-  }
-  
-  button:hover {
-    color: #A593E0;
-  }
 
-.btn-1 {
-    width: 200px;
-    height: 60px;
-    font-size: 20px;
-    color: #A593E0;
-    margin: 20px;
-    align: right;
+.btn1 {
+    background-color: #1e0e58;
+    border-color: #1e0e58;
 }
-.btn-1::after {
-    height: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-  
-  .btn-1:hover:after {
-    height: 100%;
-  }
+.btn1:hover {
+    background-color: #361e8b;
+    border-color: #361e8b;
+}
+.btn2 {
+    background-color: #311e75;
+    border-color: #311e75;
+}
+.btn2:hover {
+    background-color: #5239af;
+    border-color: #5239af;
+}
+.btn3 {
+    background-color: #503c9b;
+    border-color: #503c9b;
+}
+.btn3:hover {
+    background-color: #7e65db;
+    border-color: #7e65db;
+}
+.btn4 {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #27063a;
+}
+.btn4:hover {
+    background-color: #3c0f61a9;
+    border-color: #27063a;
+}
+.btn-primary.btn-lg.btn-block{
+    border-style: solid;
+    border-width: medium;
+    border-radius: 15px;
+    margin-top: 2.5em;
+}
 
 #mju_logo2{
     border-radius: 50px;
 }
-.header{
-    margin-top: 15px;
-    text-align: center;
-    margin: 10px;
-}
-.hr{
-    border : 5px solid #9DC8C8;
-}
-.footer{
-    text-align: center;
-    font-size: 25px;
-    color : white;
-    background-color: #9DC8C8;
-}
+
+

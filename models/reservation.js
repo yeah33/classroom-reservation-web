@@ -18,7 +18,7 @@ const Schema = mongoose.Schema;
     */
 
 var schema = new Schema({
-  roomnum: { type: Schema.Types.ObjectId, ref: 'Classroom' },  
+  roomInfo: { type: Schema.Types.ObjectId, ref: 'Classroom' },  
   booker: { type: Schema.Types.ObjectId, ref: 'User' },  
   start: { type: Number, required: true, trim: true },  
   end: { type: Number, required: true, trim: true }, 

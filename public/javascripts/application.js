@@ -1,6 +1,6 @@
-$(function () {
-  $('.need-confirm-btn').click(function () {
-    if (confirm('정말 삭제하시겠습니까?')) {
+$(function() {
+  $('.need-confirm-btn').click(function() {
+    if (confirm('Are you sure to delete?')) {
       return true;
     }
     return false;

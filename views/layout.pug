@@ -1,29 +1,31 @@
 doctype html
-//- (0207: page1, page2에 해당하는 코드 지움 / 확인하려면 passport config 이전의 git history 참조)
 html
   head
-    title 공강 공강 돌을 던지자
-
-    meta(charset='UTF-8')
+    title 명지대학교 공강공강
     meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
     script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    
+    link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', rel='stylesheet', integrity='sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN', crossorigin='anonymous')
+    script(src='https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js', type='text/javascript')
+    link(href='https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css', rel='stylesheet', type='text/css')
+
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js')
+    script(src='/javascripts/bootstrap-notify.js')
 
     //- this application
+    link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/index.css')
-    link(rel='stylesheet', href='/stylesheets/page1.css')
-    link(rel='stylesheet', href='/stylesheets/page2.css')
-
-    //- socket io
-    script(src='/socket.io/socket.io.js') 
+    link(rel='stylesheet', href='/stylesheets/loginView.css')
+    script(src='/javascripts/application.js')
 
   body
-    block top-nav
-      include ./includes/topnav
-    block hero-unit
+    header
+      h3 명지대학교 공강공강
+      hr
     if flashMessages
       each texts, type in flashMessages
         .container
@@ -34,16 +36,8 @@ html
               span(aria-hidden='true') &times;
     block content
 
-    block footer
-      include ./includes/footer
-
-    script.
-      // WebSocket을 만들고 접속
-      var socket = io();
-
-      socket.on('welcome', function() {
-        // welcome 메시지를 받으면 join을 보낸다.
-        console.log('received welcome');
-        socket.emit('join');
-      });
+    hr
+    .footer
+      p.team MJU LUNAS
+      p 김민수, 김수아, 김현목, 배수혜, 이준석, 이예은, 정찬영, 최리안, 최민지
 

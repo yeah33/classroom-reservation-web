@@ -1,5 +1,3 @@
-// (상의 필요) 홈 화면에 슬라이드 넣을 필요가 있을지
-
 $(document).ready(function() {
 	
 	var current=0;
