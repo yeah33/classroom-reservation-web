@@ -2,11 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 /* dept 학과명
+   deptID 학과ID
    room 강의실번호 */
 
 var schema = new Schema({
   department: { type: Schema.Types.ObjectId, ref: 'Dept' }, 
-  roomnum: { type: Number, required: true, trim: true } 
+  roomnum: { type: Number, required: true, trim: true },
+  deptID: {type: String, required: true, trim: true}
 }, {
   toJSON: { virtuals: true},
   toObject: {virtuals: true}

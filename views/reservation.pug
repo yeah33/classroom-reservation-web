@@ -1,0 +1,117 @@
+extends layout
+block content 
+  //상단
+  body
+    .container
+      .row(style='border:solid')
+        h1.main-title= users.name
+      .row
+        .col-3(style='border:solid')
+          h1 MENU
+        .col-9
+          .row(style='border:solid')
+            form
+              .form-row.align-items-center.pl-4.pt-2
+                p
+                  | Date: 
+                  input#datepicker(type='text', id = 'date')
+              .form-row.align-items-center.pl-4.pb-2
+                .col-auto
+                    .form
+                      input.form-control(type='text', id='q', size=20, placeholder='Select roomnum')
+                      i.fa.fa-spin.fa-spinner
+                      ul.suggest-box
+
+              .form-row.align-items-center.pl-4.pb-2
+                .col-auto
+                  .form-group
+                    button.btn.btn-primary(type='submit') 조회하기
+          .row(style='border:solid')
+            h3 queryT
+              
+  //하단
+  head
+    style.
+      .ui-timepicker {
+      font-size: 12px;
+      width:200px;
+      box-shadow:0 5px 10px rgba(0,0,0,0.2);
+      background:rgba(215, 205, 205, 0.20);
+      }
+    script.
+      $(document).ready(function () {
+      $('#StartTime,#EndTime').timepicker({
+      timeFormat: 'h:mm p',
+      interval: '60',
+      minTime: '9:00am',
+      maxTime: '6:00pm',
+      // defaultTime: '11',
+      startTime: '9:00',
+      dynamic: false,
+      dropdown: true,
+      scrollbar: true
+      });
+      });
+    title 강의실 조회
+  body
+    .jumbotron
+      .container
+        .row
+          table.table.table-bordered(style='text-align:center; border:1px solid #dddddd')
+            thead
+              tr
+                td(style='background-color: #E6E6E6; text-align: center;') 강의실
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  9
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  10
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  11
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  12
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  13
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  14
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  15
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  16
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  17
+                td(style='background-color: #E6E6E6; text-align: center; width:50px')  18
+            tbody
+              tr
+                td(style='background-color: #ffffff;') 강의실번호
+                th(style='background-color: #ffffff;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #ffffff;')
+      style.
+        .container {
+        display: flex;
+        }
+      .container
+        .col-md-
+          h5 예약 시간
+        hr(style='margin:10px')
+        .col-md-
+          input#StartTime(type='text')
+          |                     -
+          input#EndTime(type='text')
+        hr(style='margin:5px')
+      .container
+        .col-md-
+          h5 예약 목적
+        hr(style='margin:10px')
+        .col-sm
+          select.form-control(style='width:100px;height:30px;')
+            option 학습
+            option 회의
+            option 수업
+            option 기타
+      br
+      br
+      .container
+        hr(style='margin:20px')
+        button.btn.btn-success.btn-sm(type='button', style='width:100px', value='submit') 확인
+        hr(style='margin:15px')
+        button.btn.btn-warning.btn-sm(type='button', style='width:100px; float: center;', value='cancel') 취소
+    
