@@ -87,7 +87,11 @@ router.get('/suggest', (req, res, next) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //timetable불러오기 (roomnum, classstart, classend)
-
+router.get('/timeview', catchErrors(async (req, res, next) => {
+  const timetable = await Timetable.findById(req.params.id).populate('author');
+  const reservation = await Reservation.findById(req.params.id).populate('author');
+  res.json(question);
+}));
 
 //예약내역저장하기
 router.post('/reservation', needAuth, catchErrors(async (req, res, next) => {

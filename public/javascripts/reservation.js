@@ -65,25 +65,16 @@ $(function() {
 ////////////////////////////////////////////////////////////////////////
 //넘겨받은 roomnum정보에서
 //예약날짜의 요일과 시간표의 요일이 같으면 
-<% if (day(date) == timetable.day) {
-    var classstart = timetable.classstart
-    var classend = timetable.classend
-        for(var i = classstart , i < classend, i++) { %> //classstart부터 classend까지 반복하며 색칠
-            //return ?
-   
-    <% }} %>
-    
+
 $(function() {
-  $('.question-like-btn').click(function(e) {
+  $('.roomnum-btn').click(function(e) {
     var $el = $(e.currentTarget);
-    if ($el.hasClass('loading')) return;
-    $el.addClass('loading');
     $.ajax({
-      url: '/api/questions/' + $el.data('id') + '/like',
-      method: 'POST',
+      url: '/reservation/timeview',
+      method: 'GET',
       dataType: 'json',
-      success: function(data) {
-        $('.question .num-likes').text(data.numLikes);
+      success: function(timetable,reservation) {
+        $('.classstart.color').text(timetable.classstart);
         $('.question-like-btn').hide();
       },
       error: function(data, status) {
@@ -94,7 +85,7 @@ $(function() {
         console.log(data, status);
       },
       complete: function(data) {
-        $el.removeClass('loading');
+        
       }
     });
   });
