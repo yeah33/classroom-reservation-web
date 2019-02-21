@@ -5,7 +5,9 @@ const router = express.Router();
 const catchErrors = require('../lib/async-error');
 const request = require('request');
 const passport = require('passport');
-const classroom = require('../models/classroom');
+const Classroom = require('../models/classroom');
+const dept = require('../models/dept')
+
 
 function needAuth(req, res, next) {
   if (req.session.user) {
@@ -16,6 +18,9 @@ function needAuth(req, res, next) {
   }
 }
 
+router.get('/', function(req, res, next) {
+  res.render('reservation');
+});
 
 /* GET home page. */
 router.get('/', catchErrors(async (req, res, next) => {
@@ -35,6 +40,12 @@ router.get('/', catchErrors(async (req, res, next) => {
   res.render('reservation');
 }));
 
+router.get('/reservation/roomnum', catchErrors(async (req, res, next) => {
+  const user = await User.findById(req.user).populate('dept');
+  const classroom = await Classroom.find({department: user.depart._id}).populate('dept');
+  res.json(classroom);
+}));
+
 router.put('/:id', catchErrors(async (req, res, next) => {
   const reservation = await Reservation.findById(req.params.id);
 
@@ -42,6 +53,7 @@ router.put('/:id', catchErrors(async (req, res, next) => {
     req.flash('danger', 'Not exist');
     return res.redirect('back');
   }
+
   reservation.date = req.body.date;
   reservation.roomInfo = req.body.q;
 
@@ -50,64 +62,26 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   res.redirect('/index');
 }));
 
-router.post('/', needAuth, catchErrors(async (req, res, next) => {
+
+router.post('/:id/reservation', needAuth, catchErrors(async (req, res, next) => {
   const user = req.session.user;
+  const classroom = await classroom.findById(req.params.id);
+
   var reservation = new Reservation({
     date: req.body.date,
-    roomInfo: req.body.q
+    roomInfo: classroom._id
   });
+
   await reservation.save();
   req.flash('success', 'Successfully posted');
-  res.redirect('/upload');
+  res.redirect('/index');
 }));
 
 
-router.get('/suggest', (req, res, next) => {
-  let q = User.departID-req.query ? User.departID-req.query.toLowerCase() : '';
 
-  if (!q) {
-    return res.json([]);
-  }
 
-  //user.departID 의 내용이 classroom.deptID에 포함된 deptID만 모아서 배열생성
-  //JSON으로 결과를 return
-  let p = 
-  res.json(classroom.filter(deptID => {
-    return deptID.toLowerCase().indexOf(q) > -1;
-  }));
 
-  //앞에서 걸러낸 deptID에 해당하는 roomnum을 모아서 배열생성
-  //JSON으로 결과를 return
-  res.json(classroom.filter(roomInfo => {
-    return roomInfo.toLowerCase().indexOf(p) > -1;
-  }));
-  
-});
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//timetable불러오기 (roomnum, classstart, classend)
-router.get('/timeview', catchErrors(async (req, res, next) => {
-  const timetable = await Timetable.findById(req.params.id).populate('author');
-  const reservation = await Reservation.findById(req.params.id).populate('author');
-  res.json(question);
-}));
-
-//예약내역저장하기
-router.post('/reservation', needAuth, catchErrors(async (req, res, next) => {
-  const user = req.user;
-  var reservation = new Reservation({
-    date: req.body.date,
-    author: user._id,
-    date: req.body.date,
-    start: req.body.start,
-    end: req.body.end,
-    object: req.body.object
-  });
-  await reservation.save();
-  req.flash('success', 'Successfully posted');
-  res.redirect('/reservation');
-}));
 
 module.exports = router;
 

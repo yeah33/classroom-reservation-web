@@ -1,0 +1,37 @@
+a {
+  color: #00B7FF; 
+}
+
+.form {
+  position: relative;
+  input {
+    width: 20em;
+  }
+  .fa-spin {
+    display: none;
+    position: absolute;
+    left: 21em;
+    top: 0.5em;
+  }
+  &.loading {
+    .fa-spin {
+      display: block;
+    }
+  }
+  .suggest-box {
+    //position: absolute 이면 이 레이어가 다른것들 위에 둥둥 떠있다고 보면 됨
+    position: absolute;
+    background-color: #212427;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 0.5em 1em;
+      cursor: pointer;
+      list-style-type: none;
+      &:hover {
+        background-color: #659CD8;
+      }
+    }
+  }
+}

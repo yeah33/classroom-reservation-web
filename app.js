@@ -15,7 +15,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var reserves = require('./routes/reserves');
 var reservation = require('./routes/reservation');
-var reservation = require('./routes/reservation');
+
 
 var passportConfig = require('./lib/passport-config');
 
@@ -37,7 +37,7 @@ app.locals.querystring = require('querystring');
 //=======================================================
 mongoose.Promise = global.Promise; // ES6 Native Promise를 mongoose에서 사용한다.
 
-const connStr = 'mongodb://localhost:27017/test';
+const connStr = 'mongodb://bsh:bsh@cluster0-shard-00-00-gvboc.mongodb.net:27017,cluster0-shard-00-01-gvboc.mongodb.net:27017,cluster0-shard-00-02-gvboc.mongodb.net:27017/Webproject?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
 // 아래는 mLab을 사용하는 경우의 예: 본인의 접속 String으로 바꾸세요.
 // const connStr = 'mongodb://dbuser1:mju12345@ds113825.mlab.com:13825/sampledb1';
 mongoose.connect(connStr, {useMongoClient: true });
@@ -94,6 +94,7 @@ app.use('/', users);
 app.use('/home', index);
 app.use('/reserves', reserves);
 app.use('/reservation', reservation);
+
 // require('./routes/auth')(app, passport);
 // app.use('/api', require('./routes/api'));
 

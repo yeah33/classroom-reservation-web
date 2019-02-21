@@ -3,31 +3,23 @@ block content
   //상단
   body
     .container
-      .row(style='border:solid')
-        h1.main-title= "예약하기"
       .row
-        .col-3(style='border:solid')
-          h1 MENU
-        .col-9
-          .row(style='border:solid')
+        .col-30
+          .row
             form
-              .form-row.align-items-center.pl-4.pt-2
+              .form-row.align-items-center.pl-4.pb-2
                 p
                   | Date: 
-                  input#datepicker(type='text')
-              .form-row.align-items-center.pl-4.pb-2
-                .col-auto
-                    .form
-                      input.form-control(type='text', id='q', size=20, placeholder='Select roomnum')
-                      i.fa.fa-spin.fa-spinner
-                      ul.suggest-box
+                  input#datepicker(type='text', name = 'date')
 
               .form-row.align-items-center.pl-4.pb-2
                 .col-auto
                   .form-group
-                    button.btn.btn-primary(type='submit') 조회하기
-          .row(style='border:solid')
-            h3 queryT
+                    button.btn.btn-primary.check-btn(type='button') 조회하기
+
+          #btn_place
+              p 여기임
+
               
   //하단
   head
@@ -57,7 +49,7 @@ block content
     .jumbotron
       .container
         .row
-          table.table.table-bordered(style='text-align:center; border:1px solid #dddddd; height:10px')
+          table.table.table-bordered(style='text-align:center; border:1px solid #dddddd')
             thead
               tr
                 td(style='background-color: #E6E6E6; text-align: center;') 강의실
@@ -73,17 +65,17 @@ block content
                 td(style='background-color: #E6E6E6; text-align: center; width:50px')  18
             tbody
               tr
-                td(style='background-color: #ffffff;') #roomnum                
-                th.color#id 
-                th.color#id
-                th.color#id
-                th.color#id
-                th.color#id
-                th.color#id
-                th.color#id
-                th.color#id
-                th.color#id
-                th.color#id
+                td(style='background-color: #ffffff;') 강의실번호
+                th(style='background-color: #ffffff;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #5858FA;')
+                th(style='background-color: #ffffff;')
       style.
         .container {
         display: flex;
@@ -114,8 +106,5 @@ block content
         button.btn.btn-success.btn-sm(type='button', style='width:100px', value='submit') 확인
         hr(style='margin:15px')
         button.btn.btn-warning.btn-sm(type='button', style='width:100px; float: center;', value='cancel') 취소
-    
-    
-    script(src='/javascripts/reservation.js')
-    
+  script(src='/javascripts/reservation.js')
     

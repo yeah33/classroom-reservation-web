@@ -1,3 +1,6 @@
+a {
+  color: #00B7FF; }
+
 .form {
   position: relative; }
   .form input {
@@ -22,6 +25,4 @@
       .form .suggest-box li:hover {
         background-color: #659CD8; }
 
-.color{
-   background-color:#5858FA;
-}
+/*# sourceMappingURL=reservation.css.map */
