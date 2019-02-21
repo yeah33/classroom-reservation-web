@@ -1,34 +1,4 @@
-extends layout
-block content 
-  //상단
-  body
-    .container
-      .row(style='border:solid')
-        h1.main-title= "예약하기"
-      .row
-        .col-3(style='border:solid')
-          h1 MENU
-        .col-9
-          .row(style='border:solid')
-            form
-              .form-row.align-items-center.pl-4.pt-2
-                p
-                  | Date: 
-                  input#datepicker(type='text')
-              .form-row.align-items-center.pl-4.pb-2
-                .col-auto
-                    .form
-                      input.form-control(type='text', id='q', size=20, placeholder='Select roomnum')
-                      i.fa.fa-spin.fa-spinner
-                      ul.suggest-box
-
-              .form-row.align-items-center.pl-4.pb-2
-                .col-auto
-                  .form-group
-                    button.btn.btn-primary(type='submit') 조회하기
-          .row(style='border:solid')
-            h3 queryT
-              
+﻿reservation2
   //하단
   head
     style.
@@ -42,7 +12,7 @@ block content
       $(document).ready(function () {
       $('#StartTime,#EndTime').timepicker({
       timeFormat: 'h:mm p',
-      interval: '60',
+      interval: '15',
       minTime: '9:00am',
       maxTime: '6:00pm',
       // defaultTime: '11',
@@ -73,17 +43,9 @@ block content
                 td(style='background-color: #E6E6E6; text-align: center; width:50px')  18
             tbody
               tr
-                td(style='background-color: #ffffff;') #roomnum
-                td(style='background-color: #ffffff;')
+                td(style='background-color: #ffffff;') 강의실번호
                 th(style='background-color: #ffffff;')
-                th(style='background-color: #ffffff;')
-                th(style='background-color: #ffffff;')
-                
                 th(style='background-color: #5858FA;')
-                th(style='background-color: #5858FA;')
-                th(style='background-color: #5858FA;')
-                th(style='background-color: #5858FA;')
-                
                 th(style='background-color: #5858FA;')
                 th(style='background-color: #5858FA;')
                 th(style='background-color: #5858FA;')
@@ -122,8 +84,4 @@ block content
         button.btn.btn-success.btn-sm(type='button', style='width:100px', value='submit') 확인
         hr(style='margin:15px')
         button.btn.btn-warning.btn-sm(type='button', style='width:100px; float: center;', value='cancel') 취소
-    
-    
-    script(src='/javascripts/reservation.js')
-    
     

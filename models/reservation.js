@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
     end 예약 종료 시간
     date 예약 날짜
     createdAt 예약 순간의 시각 정보
+    object 예약 목적
     
     예약시간 표기 기준
     1~24 1.1 1.2 1.3 1.4 --> 15분 간격

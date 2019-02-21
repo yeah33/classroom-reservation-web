@@ -84,7 +84,26 @@ router.get('/suggest', (req, res, next) => {
   
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//timetable불러오기 (roomnum, classstart, classend)
+
+
+//예약내역저장하기
+router.post('/reservation', needAuth, catchErrors(async (req, res, next) => {
+  const user = req.user;
+  var reservation = new Reservation({
+    date: req.body.date,
+    author: user._id,
+    date: req.body.date,
+    start: req.body.start,
+    end: req.body.end,
+    object: req.body.object
+  });
+  await reservation.save();
+  req.flash('success', 'Successfully posted');
+  res.redirect('/reservation');
+}));
 
 module.exports = router;
 

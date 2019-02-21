@@ -1,3 +1,6 @@
+
+
+
 $(function() {
     $('#q').keyup(function() {
       var query = $('#q').val() || "";
@@ -42,11 +45,7 @@ $(function() {
     $("#timepicker").timepicker();
   });
   
-  
-  
-  
-  
-  
+
   
   script.
   $(document).ready(function () {
@@ -62,4 +61,63 @@ $(function() {
   scrollbar: true
   });
   });
-  
+
+////////////////////////////////////////////////////////////////////////
+//넘겨받은 roomnum정보에서
+//예약날짜의 요일과 시간표의 요일이 같으면 
+<% if (day(date) == timetable.day) {
+    var classstart = timetable.classstart
+    var classend = timetable.classend
+        for(var i = classstart , i < classend, i++) { %> //classstart부터 classend까지 반복하며 색칠
+            //return ?
+   
+    <% }} %>
+    
+$(function() {
+  $('.question-like-btn').click(function(e) {
+    var $el = $(e.currentTarget);
+    if ($el.hasClass('loading')) return;
+    $el.addClass('loading');
+    $.ajax({
+      url: '/api/questions/' + $el.data('id') + '/like',
+      method: 'POST',
+      dataType: 'json',
+      success: function(data) {
+        $('.question .num-likes').text(data.numLikes);
+        $('.question-like-btn').hide();
+      },
+      error: function(data, status) {
+        if (data.status == 401) {
+          alert('Login required!');
+          location = '/signin';
+        }
+        console.log(data, status);
+      },
+      complete: function(data) {
+        $el.removeClass('loading');
+      }
+    });
+  });
+
+//예약정보 db에 저장하기
+  $('.answer-like-btn').click(function(e) {
+    var $el = $(e.currentTarget);
+    if ($el.hasClass('disabled')) return;
+    $.ajax({
+      url: '/api/answers/' + $el.data('id') + '/like',
+      method: 'POST',
+      dataType: 'json',
+      success: function(data) {
+        $el.parents('.answer').find('.num-likes').text(data.numLikes);
+        $el.addClass('disabled');
+      },
+      error: function(data, status) {
+        if (data.status == 401) {
+          alert('Login required!');
+          location = '/signin';
+        }
+        console.log(data, status);
+      }
+    });
+  });
+}); 
