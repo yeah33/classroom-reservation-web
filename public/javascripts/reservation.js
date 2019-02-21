@@ -1,41 +1,37 @@
-
-
-
 $(function() {
-    $('#q').keyup(function() {
-      var query = $('#q').val() || "";
-      query = query.trim();
-  
-      // spinner를 돌리자..
-      $('.form').addClass('loading');
-  
-      //GET http://localhost:3000/suggest?q=kor
-      $.ajax({
-        url: '/suggest',
-        data: {q: query},
-        success: function(data) {
-          // Ajax의 결과를 잘 받았을 때
-          // 화면에 받은 결과를 가지고 list를 rendering하고..
-          var els = data.map(function(roomInfo) {
-            return '<li>' + roomInfo + '</li>';
-          });
-          //els: <-- "<li>Korea</li>","<li>Japan</li>"
-  
-          $('.suggest-box').html(els.join('\n')).show();
-  
-          // li item을 클릭했을 때, text box의 내용을 바꾸고, suggest-box감춤
-          $('.suggest-box li').click(function(e) {
-            $('#q').val($(e.currentTarget).text());
-            $('.suggest-box').hide();
-          });
-        },
-        complete: function() {
-          $('.form').removeClass('loading');  // spinner를 정지
+  $('.check-btn').click(function(e) {
+    alert("조회중");
+    var $el = $(e.currentTarget);
+    if ($el.hasClass('loading')) return;
+    $el.addClass('loading');
+    $.ajax({
+      url: '/reservation/roomnum',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        alert("하하하");
+        //가져온 데이터를 버튼으로 만든다
+        for (i in data){
+          var a = i.roomnum;
+          var btn = document.createElement('button');
+          btn.appendChild(a);  
+          document.getElementById('btn_place').appendChild(btn);        
+        };
+        $('.check-btn').hide();
+      },
+      error: function(data, status) {
+        if (data.status == 401) {
+          alert('Login required!');
+          location = '/signin';
         }
-      });
+        console.log(data, status);
+      },
+      complete: function(data) {
+        $el.removeClass('loading');
+      }
     });
   });
-
+});
 
   $( function() {
     $("#datepicker").datepicker();

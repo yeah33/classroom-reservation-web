@@ -35,6 +35,12 @@ router.get('/', catchErrors(async (req, res, next) => {
   res.render('reservation');
 }));
 
+router.get('/reservation/roomnum', catchErrors(async (req, res, next) => {
+  const user = await User.findById(req.user).populate('dept');
+  const classroom = await Classroom.find({department: user.depart._id}).populate('dept');
+  res.json(classroom);
+}));
+
 router.put('/:id', catchErrors(async (req, res, next) => {
   const reservation = await Reservation.findById(req.params.id);
 
