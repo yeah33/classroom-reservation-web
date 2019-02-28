@@ -3,22 +3,31 @@ block content
   //상단
   body
     .container
+      .row(style='border:solid')
+        h1.main-title= "예약하기"
       .row
-        .col-30
-          .row
+        .col-3(style='border:solid')
+          h1 MENU
+        .col-9
+          .row(style='border:solid')
             form
-              .form-row.align-items-center.pl-4.pb-2
+              .form-row.align-items-center.pl-4.pt-2
                 p
                   | Date: 
-                  input#datepicker(type='text', name = 'date')
+                  input#datepicker(type='text')
+              .form-row.align-items-center.pl-4.pb-2
+                .col-auto
+                    .form
+                      input.form-control(type='text', id='q', size=20, placeholder='Select roomnum')
+                      i.fa.fa-spin.fa-spinner
+                      ul.suggest-box
 
               .form-row.align-items-center.pl-4.pb-2
                 .col-auto
                   .form-group
-                    button.btn.btn-primary.check-btn(type='button') 조회하기
-
-          #btn_place
-              p 여기임
+                    button.btn.btn-primary(type='submit') 조회하기
+          .row(style='border:solid')
+            h3 queryT
               
   //하단
   head
